@@ -27,7 +27,11 @@ def predict():
     normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
     data[0] = normalized_image_array
     prediction = model.predict(data)
-    return render_template('home.html', output1=prediction)
+    if prediction == 0:
+	message = 'Сергей на фото'
+    else:
+	message = 'Сергея нет на фото'
+    return render_template('home.html', output1=message)
 
 
 
