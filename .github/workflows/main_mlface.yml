@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'mlface'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5062603D56D644A8849605E40D064E15 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2BFBD16ACEF44F08BD7D5675FD029990 }}
