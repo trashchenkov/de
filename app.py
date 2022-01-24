@@ -28,9 +28,9 @@ def predict():
     data[0] = normalized_image_array
     prediction = model.predict(data)
     if prediction == 0:
-	message = 'Сергей на фото'
+        message = 'Сергей на фото'
     else:
-	message = 'Сергея нет на фото'
+        message = 'Сергея нет на фото'
     return render_template('home.html', output1=message)
 
 
