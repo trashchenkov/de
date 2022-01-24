@@ -17,4 +17,18 @@ def loadPage():
 
 @app.route("/predict", methods=['POST'])
 def predict():
-    request.files['file']
+    in_img = request.files['file']
+    model = load_model('keras_model.h5')
+    data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+    image = Image.open(in_img)
+    size = (224, 224)
+    image = ImageOps.fit(image, size, Image.ANTIALIAS)
+    image_array = np.asarray(image)
+    normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
+    data[0] = normalized_image_array
+    prediction = model.predict(data)
+
+
+
+if __name__ == "__main__":
+    app.run()
