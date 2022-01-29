@@ -1,7 +1,8 @@
 <html>
    <body>
-      <form action = "http://localhost:5000/uploader" method = "POST" 
+      <form action = "{{ url_for('predict')}}" method = "POST" 
          enctype = "multipart/form-data">
+	      <title>Breast Cancer Prediction</title>
          <div class="form-group  purple-border">
 				  <label for="comment">Общая площадь, кв. м:</label>
 				  <textarea class="form-control" rows="2" id="query1" name="query1" rows="2" cols="5" autofocus>{{query1}}</textarea>
