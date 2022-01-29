@@ -1,8 +1,5 @@
-from flask import Flask, request, render_template
 from keras.models import load_model
-from PIL import Image, ImageOps
-import numpy as np
-
+from flask import Flask, request, render_template
 
 app = Flask("__name__")
 
@@ -12,28 +9,26 @@ q = ""
 
 @app.route("/")
 def loadPage():
-	return render_template('home.html', query="")
+  return render_template('home.html', query="")
 
 
 @app.route("/predict", methods=['POST'])
 def predict():
-    in_img = request.files['file']
-    model = load_model('keras_model.h5')
-    data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
-    image = Image.open(in_img)
-    size = (224, 224)
-    image = ImageOps.fit(image, size, Image.ANTIALIAS)
-    image_array = np.asarray(image)
-    normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
-    data[0] = normalized_image_array
-    prediction = model.predict(data)
-    if prediction == 0:
-        message = 'Сергей на фото'
-    else:
-        message = 'Сергея нет на фото'
-    return render_template('home.html', output1=message)
-
+  inputQuery1 = request.form['query1']
+  inputQuery2 = request.form['query2']
+  inputQuery3 = request.form['query3']
+  inputQuery4 = request.form['query4']
+  inputQuery5 = request.form['query5']
+  inputQuery6 = request.form['query6']
+  inputQuery7 = request.form['query7']
+  inputQuery8 = request.form['query8']
+  inputQuery9 = request.form['query9']
+  ml_model = load_model('model')
+  data = [[inputQuery1, inputQuery2, inputQuery3, inputQuery4, inputQuery5, inputQuery6, inputQuery7, inputQuery8, inputQuery9]]
+  pred = ml_model.predict(data)
+  return render_template('home.html', output1=pred, query1 = request.form['query1'], query2 = request.form['query2'],query3 = request.form['query3'],query4 = request.form['query4'],query5 = request.form['query5'], query6 = request.form['query6'],query7 = request.form['query7'],query8 = request.form['query8'], query9 = request.form['query9'])
 
 
 if __name__ == "__main__":
     app.run()
+
