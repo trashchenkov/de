@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'moscow'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BF253CCD57CE414A86E3204CA809825D }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2ED62C25FA974CBE81936F846273AFF1 }}
