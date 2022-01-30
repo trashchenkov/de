@@ -26,7 +26,7 @@ def predict():
   ml_model = pickle.load(open('model.sav', 'rb'))
   data = [[inputQuery1, inputQuery2, inputQuery3, inputQuery4, inputQuery5, inputQuery6, inputQuery7, inputQuery8, inputQuery9]]
   pred = ml_model.predict(data)
-  return render_template('home.html', output1=pred, query1 = request.form['query1'], query2 = request.form['query2'],query3 = request.form['query3'],query4 = request.form['query4'],query5 = request.form['query5'], query6 = request.form['query6'],query7 = request.form['query7'],query8 = request.form['query8'], query9 = request.form['query9'])
+  return render_template('home.html', output1=pred[0], query1 = request.form['query1'], query2 = request.form['query2'],query3 = request.form['query3'],query4 = request.form['query4'],query5 = request.form['query5'], query6 = request.form['query6'],query7 = request.form['query7'],query8 = request.form['query8'], query9 = request.form['query9'])
 
 
 if __name__ == "__main__":
